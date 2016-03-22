@@ -4,7 +4,7 @@
   "description": "> **iOS Dev** - Remote control   > DDI 2015-2016   > Gobelins, l'école de l'image",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=development babel-node ./node_modules/.bin/webpack-dev-server --content-base build/",
+    "dev": "NODE_ENV=development babel-node build/dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,6 +24,7 @@
     "babel-plugin-transform-runtime": "^6.6.0",
     "babel-preset-es2015": "^6.6.0",
     "css-loader": "^0.23.1",
+    "express": "^4.13.4",
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.12.0",
     "node-sass": "^3.4.2",
@@ -36,12 +37,15 @@
     "vue-loader": "^8.2.1",
     "vue-style-loader": "^1.0.0",
     "webpack": "^1.12.14",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-middleware": "^1.5.1",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
     "material-design-lite": "^1.1.3",
     "normalize-css": "^2.3.1",
     "q": "^1.4.1",
+    "socket.io": "^1.4.5",
     "vue": "^1.0.18",
     "vue-google-maps": "^0.1.12",
     "vue-mdl": "^0.4.0"

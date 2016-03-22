@@ -1,28 +1,31 @@
 import path from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 
+const basePath = path.resolve(__dirname, '..')
+
 const webpackConfig = {
   name: 'app',
   target: 'web',
-  context: __dirname + "/src",
+  context: basePath,
   resolve: {
     extensions: ['', '.js', '.vue'],
-    fallback: [path.join(__dirname, '../node_modules')],
+    fallback: [path.join(basePath, '../node_modules')],
     alias: {
-      'src': path.resolve(__dirname, '/src')
+      'src': path.resolve(basePath, 'src')
     }
   },
   entry: {
-    app: __dirname + "/src/boot.js",
+    app: 'src/boot.js'
   },
   output: {
-    path: __dirname + "/dist",
+    path: path.resolve(basePath, 'dist'),
+    publicPath: '/',
     filename: "bundle.js"
   },
   devtool: 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
-      template: __dirname + "/src/index.html",
+      template: path.resolve(basePath, 'src/index.html'),
       hash: false,
       filename: 'index.html',
       chunks: ['app'],
