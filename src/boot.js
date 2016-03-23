@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import vmdl from 'vue-mdl'
 import App from './App'
+import 'gsap'
 
 vmdl.registerAll(Vue)
 
