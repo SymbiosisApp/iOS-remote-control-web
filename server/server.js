@@ -9,9 +9,11 @@ exports.socket = function useSocket (server) {
   var io = require('socket.io')(http);
 
   io.on('connection', function (socket) {
-    // socket.emit('news', { hello: 'world' });
     socket.on('SET_ME_POSITION', function (data) {
       io.emit('UPDATE_ME_POSITION', data)
+    });
+    socket.on('STOP_ALL_MOVE', function () {
+      socket.broadcast.emit('STOP_MOVE')
     });
   });
 

@@ -85,6 +85,11 @@ export default {
     socket.on('UPDATE_ME_POSITION', function (data) {
       vm.updateMePosition(data)
     })
+
+    socket.on('STOP_MOVE', function () {
+      console.log('stop')
+      vm.stop()
+    })
   },
   data () {
     return {
@@ -117,6 +122,7 @@ export default {
         lat: this.lat,
         lng: this.lng,
         onUpdate: function (self) {
+          socket.emit('STOP_ALL_MOVE')
           socket.emit('SET_ME_POSITION', { lat: position.lat, lng: position.lng });
         }
       })
