@@ -118,11 +118,11 @@ export default {
         lat: this.lat,
         lng: this.lng,
       }
+      socket.emit('STOP_ALL_MOVE')
       this.animPos = TweenMax.to(position, this.time / 1000, {
         lat: this.lat,
         lng: this.lng,
         onUpdate: function (self) {
-          socket.emit('STOP_ALL_MOVE')
           socket.emit('SET_ME_POSITION', { lat: position.lat, lng: position.lng });
         }
       })
