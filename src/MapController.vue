@@ -30,7 +30,7 @@ export default {
     Map
   },
   ready () {
-    this.sendUpdate = throttle(this.sendUpdate, 100)
+    this.sendUpdate = throttle(this.sendUpdate, 50)
     var mapElem = this.$els.map
     var vm = this
     function initMap() {
