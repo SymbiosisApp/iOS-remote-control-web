@@ -23,17 +23,14 @@
 import {load, Map, Marker} from 'vue-google-maps'
 import socket from './socket'
 import padStart from 'lodash/padStart'
-
-// socket.on('news', function (data) {
-//   console.log(data);
-//   socket.emit('my other event', { my: 'data' });
-// });
+import throttle from 'lodash/throttle'
 
 export default {
   components: {
     Map
   },
   ready () {
+    this.sendUpdate = throttle(this.sendUpdate, 100)
     var mapElem = this.$els.map
     var vm = this
     function initMap() {
@@ -118,12 +115,13 @@ export default {
         lat: this.lat,
         lng: this.lng,
       }
+      const vm = this
       socket.emit('STOP_ALL_MOVE')
       this.animPos = TweenMax.to(position, this.time / 1000, {
         lat: this.lat,
         lng: this.lng,
         onUpdate: function (self) {
-          socket.emit('SET_ME_POSITION', { lat: position.lat, lng: position.lng });
+          vm.sendUpdate({ lat: position.lat, lng: position.lng })
         }
       })
       console.log(data)
@@ -161,6 +159,9 @@ export default {
     updateMePosition (data) {
       this.me = data
       this.markerMe.setPosition(data)
+    },
+    sendUpdate (data) {
+      socket.emit('SET_ME_POSITION', data);
     }
   }
 }
