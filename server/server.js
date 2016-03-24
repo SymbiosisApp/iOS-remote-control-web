@@ -11,7 +11,6 @@ exports.socket = function useSocket (server) {
   io.on('connection', function (socket) {
     // socket.emit('news', { hello: 'world' });
     socket.on('SET_ME_POSITION', function (data) {
-      console.log('SET_ME_POSITION')
       io.emit('UPDATE_ME_POSITION', data)
     });
   });

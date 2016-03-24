@@ -88,9 +88,9 @@ export default {
   },
   data () {
     return {
-      sliderPos: 0,
-      time: 0,
-      textVal: "0",
+      sliderPos: 200,
+      time: 200,
+      textVal: "200",
       timeMult: 1.5,
       lat: 48.87251,
       lng: 2.3853973,
