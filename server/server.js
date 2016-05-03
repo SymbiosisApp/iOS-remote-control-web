@@ -15,6 +15,9 @@ exports.socket = function useSocket (server) {
     socket.on('STOP_ALL_MOVE', function () {
       socket.broadcast.emit('STOP_MOVE')
     });
+    socket.on('SET_PEDOMETER', function (data) {
+      io.emit('UPDATE_PEDOMETER', data)
+    });
   });
 
   return http

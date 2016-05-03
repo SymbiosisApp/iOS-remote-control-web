@@ -58,7 +58,6 @@ export default {
         })
       });
 
-
       // Me
       var meIcon = {
         path: 'M-10,0a10,10 0 1,0 20,0a10,10 0 1,0 -20,0 z',
@@ -79,10 +78,10 @@ export default {
     }
     load('AIzaSyAIHiKtyQ2FO-mBG3jVQA4XqgKsEqlwwFk')
 
+
     socket.on('UPDATE_ME_POSITION', function (data) {
       vm.updateMePosition(data)
     })
-
     socket.on('STOP_MOVE', function () {
       console.log('stop')
       vm.stop()
@@ -94,7 +93,7 @@ export default {
       time: 200,
       textVal: "200",
       timeMult: 1.5,
-      lat: 48.87251,
+      lat: 48.87252,
       lng: 2.3853973,
       me: { lat: 48.87251, lng: 2.3853973 },
       map: null,
